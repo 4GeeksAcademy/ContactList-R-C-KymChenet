@@ -17,7 +17,7 @@ const Contacts = () => {
                                 {store.contacts.length === 0 ? (
                                         <li className="list-group-item">No contacts</li>
                                 ) : (
-                                  store.contacts.map(contact => {
+                                  store.contacts.map(contact => ( 
                                         <li key={contact.id} className="list-group-item d-flex justify-center" >
                                                 <div>
                                                      <h5>{contact.name}</h5> 
@@ -29,7 +29,7 @@ const Contacts = () => {
                                                         className="btn btn-danger">Delete Contact
                                                 </button>
                                         </li>      
-                                         } ))}
+                                         ) ))}
                          </ul>    
                 </div>  
          )

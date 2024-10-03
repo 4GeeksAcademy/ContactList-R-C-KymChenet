@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const AddContact = () => {
     const {actions} = useContext(Context);
-    const [form, setForms] = useState({ name: "", phone: "", email: "", address: ""})
+    const [form, setForms] = useState({ name: " ", phone: " ", email: " ", address: " "})
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -37,8 +37,8 @@ const AddContact = () => {
                 <div className="mb-3">
                     <label>Email</label>
                     <input 
-                    type="text" 
-                    name="name"
+                    type="email" 
+                    name="email"
                     className="form-control" 
                     value={form.email}
                     onChange={handleChange}
@@ -48,7 +48,7 @@ const AddContact = () => {
                     <label>Phone</label>
                     <input 
                     type="text" 
-                    name="name"
+                    name="phone"
                     className="form-control" 
                     value={form.phone}
                     onChange={handleChange}
@@ -58,13 +58,13 @@ const AddContact = () => {
                     <label>Address</label>
                     <input 
                     type="text" 
-                    name="name"
+                    name="address"
                     className="form-control" 
                     value={form.address}
                     onChange={handleChange}
                     placeholder="Enter address "/>   
                 </div>
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button className="btn btn-primary" type="submit">Save</button>
                 <Link to="/" className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">or get back to contacts</Link>
             </form>
        </div>

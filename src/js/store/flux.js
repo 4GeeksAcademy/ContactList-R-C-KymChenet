@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			contacts: [],
-			agenda: "my_agenda"
+			agenda: "my_agenda",
+			selectedContact: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -28,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				 .then(response => response.json())
 				 .then(data => setStore({contacts: data.contacts} )) 
 				},
+				
 				addContact: (contact) => {
 				const {agenda, contacts} = getStore();
 
@@ -58,9 +60,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
+			getContact: (id) => {
+				const {agenda} = getStore();
 
-
-
+				fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${id}`) 
+				.then(response => response.json())
+				.then(data => { 
+					setStore({selectedContact: data}) 
+				})
+				.catch(e => {
+					console.log("Error getting the contact", e);	
+				})
+			 },
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
