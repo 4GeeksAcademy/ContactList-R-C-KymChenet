@@ -18,7 +18,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			selectedContact: null
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
@@ -48,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(data => {
 					setStore({ contacts: [...contacts, data] });
 				})
-				.catch(error => console.error("Error adding contact:", error)); // Manejo de errores
+				.catch(error => console.error("Error adding contact:", error));
 			},
 				
 				updateContact: (contactId, updatedContact) => {
