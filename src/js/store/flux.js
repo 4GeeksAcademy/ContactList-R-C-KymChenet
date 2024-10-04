@@ -39,10 +39,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify(contact)
-				}).then(response => response.json())
-				 .then(data => setStore({contacts: [...contacts,data]})) 
-				},
+				}).then(response => {
+					if (!response.ok) {
+						throw new Error('Failed to add contact');
+					}
+					return response.json();
+				})
+				.then(data => {
+					setStore({ contacts: [...contacts, data] });
+				})
+				.catch(error => console.error("Error adding contact:", error)); // Manejo de errores
+			},
+				
+				updateContact: (contactId, updatedContact) => {
 
+					const { agenda, contacts } = getStore();
+					fetch(`https://playground.4geeks.com/contact/agendas/${agenda}/contacts/${contactId}`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(updatedContact)
+					})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						return response.json();
+					})
+					.then(data => {
+						const updatedContacts = contacts.map(contact =>
+							contact.id === contactId ? { ...contact, ...data } : contact
+						);
+						setStore({ contacts: updatedContacts });
+					})
+					.catch(error => console.log("Error updating contact:", error));
+
+
+				},
 				deleteContact: (id) => {
 					const {agenda, contacts} = getStore();
 

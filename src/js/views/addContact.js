@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const AddContact = () => {
     const {actions} = useContext(Context);
-    const [form, setForms] = useState({ name: " ", phone: " ", email: " ", address: " "})
+    const ImageCard = "https://static.vecteezy.com/system/resources/previews/016/833/872/original/github-logo-git-hub-icon-on-white-background-free-vector.jpg";
+    const [form, setForms] = useState({ name: " ", email: " ", phone: " ", address: " ", photo: ImageCard})
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -16,13 +17,19 @@ const AddContact = () => {
 
     const handlerAddContact = (e) => {
         e.preventDefault()
+
         actions.addContact(form)
-        navigate("/contacts")
+        .then(() => {
+            navigate('/contacts'); 
+        })
+        .catch(error => {
+            console.error("Error during adding contact:", error)
+        })
     }
 
     return (
         <div className="container"> 
-                <h1>Add a new contact</h1>
+                <h1 className="d-flex justify-content-center">Add a new contact</h1>
           <form onSubmit={handlerAddContact}>
                 <div className="mb-3">
                     <label>Full Name</label>
@@ -64,7 +71,9 @@ const AddContact = () => {
                     onChange={handleChange}
                     placeholder="Enter address "/>   
                 </div>
+                <div className="d-grid gap-2 col-12 mx-auto">
                 <button className="btn btn-primary" type="submit">Save</button>
+                </div>
                 <Link to="/" className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">or get back to contacts</Link>
             </form>
        </div>
