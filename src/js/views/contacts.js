@@ -30,7 +30,7 @@ const Contacts = () => {
             .catch(error => {
                 console.log("Error updating contact:", error);
             });
-    }
+    };
     const handleInputChange = (e) => {
         const {name, value} = e.target
         setFormValues({
@@ -86,9 +86,9 @@ const Contacts = () => {
                                         className="form-control mb-2"
                                     />
                                     <button onClick={() => handleUpdate(contact.id)} className="btn btn-primary" type="submit">
-                                        Save Contact
+                                       Update Contact
                                     </button>
-                                    <Link to="/addContact" className="btn btn-success mt-3" type="submit">Contact list</Link>
+                            
                                 </div>
                             ) : ( 
                               <div className="d-flex align-items-center" style={{ flex: '1' }}>

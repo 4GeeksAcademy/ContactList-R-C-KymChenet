@@ -11,6 +11,7 @@ import {AddContact} from "./views/addContact";
 import { Contacts } from "./views/contacts";
 
 
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -26,6 +27,7 @@ const Layout = () => {
 
 						<Route path="/contacts" element={<Contacts />} />
 						<Route path="/addContact" element={<AddContact />} />
+						
 						
 						<Route path="/" element={<Contacts />} />
 

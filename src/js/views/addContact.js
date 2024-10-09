@@ -72,7 +72,7 @@ const AddContact = () => {
                     placeholder="Enter address "/>   
                 </div>
                 <div className="d-grid gap-2 col-12 mx-auto">
-                <button className="btn btn-primary" type="submit">Save</button>
+                <button className="btn btn-primary" type="submit">Save Contact</button>
                 </div>
                 <Link to="/" className="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">or get back to contacts</Link>
             </form>
